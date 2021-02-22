@@ -1,0 +1,55 @@
+<style>
+.card{
+	background:#eee;
+	border-radius:5px;
+	padding:10px;
+	margin:10px;
+}
+.card img {
+	padding:0px;
+	margin:0px;
+	height:200px;
+}
+</style>
+<div class="col-md-12"><h3><%= t('posts')%></h3></div>
+	
+<% if !@posts.nil? && !@posts.blank? %>
+
+	<% @posts.each do |post|%>
+	<% category = CategoryType.where("id=?", post.category_id).select("category_name").first%>
+		<div class="col-md-4">
+		<div class="card">
+		<img class="card-img-top" src="<% if !post.featured_image.nil?%><%= post.featured_image%><%else%>/images/bear.jpg<%end%>" alt="Card image" style="width:100%">
+			<div class="card-body">
+				<h4 class="card-title"><%= post.title%></h4>
+				<p class="card-text"><%= post.description%></p>
+				<%=link_to t('read_more'), post_path(post), :class => 'btn btn-primary' %>
+			</div>
+	  	</div>
+		</div>
+	<%end%>
+
+<%else%>
+	<div class="well clearfix">
+		<p><%= t('no_post_msg')%></p>
+	</div>
+
+<%end%>
+
+<script>
+      $(document).ready(function(){
+         
+          $('.lang-select').change(function(){
+
+            var lan = $('.lang-select').val();
+            
+              if (lan == "English"){
+                window.location.href = "/en";
+              }   
+              else if(lan == "Français"){
+                window.location.href = "/fr";
+              }
+          });
+      });
+
+</script>

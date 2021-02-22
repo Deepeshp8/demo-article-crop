@@ -1,0 +1,68 @@
+
+<!-- Css files-->
+
+
+
+<!-- Js files-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/BossBele/cropzee@v2.0/dist/cropzee.js" defer></script>
+<h3><%= t('create_post')%></h3>
+
+<%= form_for :post, url: posts_path do |f| %>
+	
+	
+		<% if @post.errors.any? %>
+	        <% @post.errors.full_messages.each do |msg| %>
+	          <div class="alert alert-danger"><%= msg %></div>
+	        <% end %>  
+	  	<% end %>
+
+		<p>
+			<%= f.label :title, t('title') %><br>
+			<%= f.text_field(:title, {:class => 'form-control'}) %>
+		</p>
+
+		<p>
+			<%= f.label :description, t('body') %><br>
+			<%= f.text_area(:description, {:class => 'form-control'})  %>
+		</p>
+
+		<p>
+			<%= f.label :Category, t('category') %><br>
+			<%= f.collection_select(:category_id, CategoryType.all, :id, :category_name, {selected: CategoryType.first.try(:category_name)}, {class: 'form-control'})%>
+		</p>
+		
+		
+		<p>
+		<input id="cropzee-input" type="file" name="">
+		<div id="" class="image-previewer" data-cropzee="cropzee-input" onchange="alert('click on set image to save crop image')"></div>
+		
+		<input type="hidden" id="featured_image" name="featured_image" value="">
+		
+		</p>
+	
+	<p>
+		<%= f.submit({:class => 'btn btn-primary',:onclick => "return validateField()"})%>
+	</p>
+
+
+<% end %>
+<script>
+$(document).ready(function(){
+  $("#cropzee-input").cropzee({
+
+  });
+});  
+
+function validateField(){
+	var flag = true;
+	if ($("#featured_image").val() == ""){
+		setImagecropzeeGetImage()
+	}
+	return flag
+}
+function setImagecropzeeGetImage(){
+	var image = cropzeeGetImage('cropzee-input');
+	$("#featured_image").val(image);
+}
+</script>

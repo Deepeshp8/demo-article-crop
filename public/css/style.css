@@ -1,0 +1,94 @@
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -15px;
+    font-size: 30px;
+    /* background: red; */
+    color: #337ab7;
+    font-weight: bold;
+}
+
+.lang-select{
+	  float: left;
+    margin-top: 10px;
+    padding: 5px 10px;
+    color: #777;
+    position: absolute;
+    right: 15PX;
+    top:0px;
+}
+.type-b{
+ background: #337ab7;
+    padding: 5px 10px;
+    color: #fff;
+    position: absolute;
+    border-radius: 5px;
+    top: -11px;
+    right: 0px
+}
+.container{
+  position:relative;
+}
+.c-body{
+	display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+.well{
+    background: #dff0d8;
+    padding: 20px !important
+
+
+}
+.well img{
+width: 100%;
+height: auto;
+}
+.actions input{
+	margin:10px 0;
+}
+.field input[type="text"]{
+	margin-bottom:20px;
+	width:300px;
+	height:35px;
+
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #337ab7;
+    background-color: #e7e7e7;
+}
+@media (min-width: 768px) and (max-width: 1280px) {
+   .type-b {
+    background: #337ab7;
+    padding: 5px 10px;
+    color: #fff;
+    position: relative;
+    border-radius: 5px;
+    top: 0;
+    right: 0px;
+}
+.card .card-img-top {
+	padding:0px;
+	margin:0px;
+	height:400px;
+}
+}
+
+
+@media (max-width:767px){
+  .type-b {
+    background: #337ab7;
+    padding: 5px 10px;
+    color: #fff;
+    position: relative;
+    border-radius: 5px;
+    top: 0;
+    right: 0px;
+}
+.card .card-img-top {
+	padding:0px;
+	margin:0px;
+	height:400px;
+}
+}
+
+
